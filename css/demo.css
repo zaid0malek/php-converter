@@ -1,0 +1,43 @@
+* {
+   margin: 0;
+   padding: 0;
+}
+
+body {
+   font-family: 'Roboto', sans-serif;
+   font-style: normal;
+   font-weight: 300;
+   /* font-smoothing: antialiased; */
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+   font-size: 15px;
+   background: #eee;
+}
+
+
+
+
+/* @media only screen and (min-width: 720px) {
+   body {
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 24px;
+   }
+
+
+} */
+.modal {
+   display: block;
+}
+
+.modal-dialog {
+   width: 70rem;
+}
+
+.modal-content {
+   border-radius: 10px;
+   padding-top: 2rem;
+   /* height: 40rem; */
+   width: 50rem;
+}
