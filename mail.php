@@ -1,9 +1,9 @@
 <?php
 if (isset($_POST['submit'])) {
-    $to=$_POST['to'];
-    $sub=$_POST['subject'];
-    $body=$_POST['body'];
-    $from="From: hekahekameka@gmail.com";
+    $to = $_POST['to'];
+    $sub = $_POST['subject'];
+    $body = $_POST['body'];
+    $from = "From: hekahekameka@gmail.com";
 
     if(mail($to, $sub, $body, $from)){
         echo "mail sent to: $to, having :$sub//$body ,,, by $from";
