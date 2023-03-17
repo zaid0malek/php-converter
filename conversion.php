@@ -69,13 +69,13 @@ function vol($val, $from, $to)
 }
 
 // this fuction converts any volume to liters 
-function toLtr($val,$from)
+function toLtr($val, $from)
 {
     return $val*liter[$from];
 }
 
 // this fuction converts liters to users selected unit
-function fromLtr($val,$to)
+function fromLtr($val, $to)
 {
     return $val/liter[$to];
 }
@@ -109,7 +109,7 @@ function temp($val, $from, $to)
 // this fuction converts any temerature to celcius 
 function toCelcius($val, $from) 
 {
-  switch($from) {
+  switch ($from) {
     case 'Celcius':
       return $val;
       break;
@@ -125,7 +125,7 @@ function toCelcius($val, $from)
 // this fuction converts celcius to users selected unit
 function fromCelcius($val, $to) 
 {
-  switch($to) {
+  switch ($to) {
     case 'Celcius':
       return $val;
       break;
