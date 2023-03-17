@@ -141,7 +141,7 @@ function fromCelcius($val, $to)
 // this fuction converts any area to Square Meters and then from Square Meters to users selected unit
 function area($val, $from, $to)
 {
-    $meter=toSqMeter($val, $from);
+    $meter = toSqMeter($val, $from);
     echo fromSqMeter($meter, $to);
 }
 
@@ -160,7 +160,7 @@ function fromSqMeter($val, $to)
 // this fuction converts any speed to KMPH and then from KMPH to users selected unit
 function speed($val, $from, $to)
 {
-    $kilo=toKMPH($val, $from);
+    $kilo = toKMPH($val, $from);
     echo fromKMPH($kilo, $to);
 }
 
