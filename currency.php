@@ -4,15 +4,13 @@ if(isset($_POST['submit'])){
   $to=$_POST['opt2'];
   $value=$_POST['val1'];
   $reqUrl = "https://api.exchangerate-api.com/v4/latest/$from";
-  $response_json = file_get_contents($reqUrl);
+  $responseJson = file_get_contents($reqUrl);
 
   // Continuing if we got a result
   if(false !== $responseJson) {
-      // Try/catch for json_decode operation
       try {
-      // Decoding
-      $responseObject = json_decode($responseJson);
-      $price = round(($value * $responseObject->rates->$to), 2);
+        $responseObject = json_decode($responseJson);
+        $price = round(($value * $responseObject->rates->$to), 2);
       }
       catch(Exception $e) {
         echo $e;

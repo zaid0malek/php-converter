@@ -1,5 +1,5 @@
 <?php
-if(isset($_POST['submit'])){
+if (isset($_POST['submit'])) {
     $to=$_POST['to'];
     $sub=$_POST['subject'];
     $body=$_POST['body'];

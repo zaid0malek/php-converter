@@ -48,11 +48,13 @@ function len($val, $from, $to)
     $meter = toMeter($val, $from);
     echo fromMeter($meter, $to);
 }
+
 // this fuction converts any length to meter 
 function toMeter($val, $from)
 {
     return $val * meter[$from];
 }
+
 // this fuction converts meter to users selected unit
 function fromMeter($val, $to)
 {
@@ -65,11 +67,13 @@ function vol($val, $from, $to)
     $liter = toLtr($val, $from);
     echo fromLtr($liter, $to);
 }
+
 // this fuction converts any volume to liters 
 function toLtr($val,$from)
 {
     return $val*liter[$from];
 }
+
 // this fuction converts liters to users selected unit
 function fromLtr($val,$to)
 {
@@ -82,11 +86,13 @@ function weight($val, $from, $to)
     $kilo = toKG($val, $from);
     echo fromKG($kilo, $to);
 }
+
 // this fuction converts any weight to Kilogram 
 function toKG($val, $from)
 {
     return $val * kg[$from];
 }
+
 // this fuction converts Kilogram to users selected unit
 function fromKG($val, $to)
 {
@@ -99,6 +105,7 @@ function temp($val, $from, $to)
   $celsius = toCelcius($val, $from);
   echo fromCelcius($celsius, $to);
 }
+
 // this fuction converts any temerature to celcius 
 function toCelcius($val, $from) 
 {
@@ -114,6 +121,7 @@ function toCelcius($val, $from)
       break;
   }
 }
+
 // this fuction converts celcius to users selected unit
 function fromCelcius($val, $to) 
 {
@@ -136,11 +144,13 @@ function area($val, $from, $to)
     $meter=toSqMeter($val, $from);
     echo fromSqMeter($meter, $to);
 }
+
 // this fuction converts any area to Square Meters 
 function toSqMeter($val, $from)
 {
     return $val * pow(meter[$from], 2);
 }
+
 // this fuction converts Square Meters to users selected unit
 function fromSqMeter($val, $to)
 {
@@ -153,11 +163,13 @@ function speed($val, $from, $to)
     $kilo=toKMPH($val, $from);
     echo fromKMPH($kilo, $to);
 }
+
 // this fuction converts any speed to KMPH 
 function toKMPH($val, $from)
 {
     return $val * kmph[$from];
 }
+
 // this fuction converts KMPH to users selected unit
 function fromKMPH($val, $to)
 {
@@ -165,30 +177,30 @@ function fromKMPH($val, $to)
 }
 
 // this if statement is executed on ajax call it checks from where the ajax is called and redirects execution to desired function
-if(isset($_POST['type'])){
+if (isset($_POST['type'])) {
     $value = $_POST["v1"];
     $from = $_POST["o1"];
     $to = $_POST["o2"];
 
-    switch($_POST['type']){
-        case 'length':
-            len($value, $from, $to);
-            break;
-        case 'volume':
-            vol($value, $from, $to);
-            break;
-        case 'weight':
-            weight($value, $from, $to);
-            break;
-        case 'temp':
-            temp($value, $from, $to);
-            break;
-        case 'area':
-            area($value, $from, $to);
-            break;
-        case 'speed':
-            speed($value, $from, $to);
-            break;
+    switch ($_POST['type']) {
+      case 'length':
+        len($value, $from, $to);
+        break;
+      case 'volume':
+        vol($value, $from, $to);
+        break;
+      case 'weight':
+        weight($value, $from, $to);
+        break;
+      case 'temp':
+        temp($value, $from, $to);
+        break;
+      case 'area':
+        area($value, $from, $to);
+        break;
+      case 'speed':
+        speed($value, $from, $to);
+        break;
     }
 
 }
