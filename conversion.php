@@ -1,4 +1,5 @@
 <?php
+// values of different lengths to 1 meter
 const meter = array(
   "Inch" => 0.0254,
   "Foot" => 0.3048,
@@ -11,6 +12,8 @@ const meter = array(
   "Micrometer" => 0.000001,
   "Nanometer" => 0.000000001
 );
+
+// values of different volumes to 1 liter
 const liter = array(
   "cmcube" => 0.001,
   "mcube" => 1000,
@@ -18,6 +21,7 @@ const liter = array(
   "mmcube" => 0.000001
 );  
 
+// values of different weight to 1 kilogram
 const kg = array(
   "Ounce" =>	0.0283495,
   "Pound" =>	0.453592,
@@ -27,6 +31,7 @@ const kg = array(
   "Kilogram" =>	1
 );
 
+// values of different speeds to 1 KMPH
 const kmph = array(
     "Lightspeed" => 1079252848.8,
     "Mach" => 1255.08,
@@ -37,41 +42,66 @@ const kmph = array(
     "Knot" => 1.852
 );
 
+// this fuction converts any length to meter and then from meter to users selected unit
+function len($val, $from, $to)
+{
+    $meter = toMeter($val, $from);
+    echo fromMeter($meter, $to);
+}
+// this fuction converts any length to meter 
+function toMeter($val, $from)
+{
+    return $val * meter[$from];
+}
+// this fuction converts meter to users selected unit
+function fromMeter($val, $to)
+{
+    return $val / meter[$to];
+}
 
-function len($val,$from,$to){
-    $meter=toMeter($val,$from);
-    echo fromMeter($meter,$to);
+// this fuction converts any volume to liters and then from liters to users selected unit
+function vol($val, $from, $to)
+{
+    $liter = toLtr($val, $from);
+    echo fromLtr($liter, $to);
 }
-function toMeter($val,$from){
-    return $val*meter[$from];
-}
-function fromMeter($val,$to){
-    return $val/meter[$to];
-}
-
-function vol($val,$from,$to){
-    $liter=toLtr($val,$from);
-    echo fromLtr($liter,$to);
-}
-function toLtr($val,$from){
+// this fuction converts any volume to liters 
+function toLtr($val,$from)
+{
     return $val*liter[$from];
 }
-function fromLtr($val,$to){
+// this fuction converts liters to users selected unit
+function fromLtr($val,$to)
+{
     return $val/liter[$to];
 }
 
-function weight($val,$from,$to){
-    $kilo=toKG($val,$from);
-    echo fromKG($kilo,$to);
+// this fuction converts any weight to Kilogram and then from Kilogram to users selected unit
+function weight($val, $from, $to)
+{
+    $kilo = toKG($val, $from);
+    echo fromKG($kilo, $to);
 }
-function toKG($val,$from){
-    return $val*kg[$from];
+// this fuction converts any weight to Kilogram 
+function toKG($val, $from)
+{
+    return $val * kg[$from];
 }
-function fromKG($val,$to){
-    return $val/kg[$to];
+// this fuction converts Kilogram to users selected unit
+function fromKG($val, $to)
+{
+    return $val / kg[$to];
 }
 
-function toCelcius($val, $from) {
+// this fuction converts any temerature to celcius and then from celcius to users selected unit
+function temp($val, $from, $to) 
+{
+  $celsius = toCelcius($val, $from);
+  echo fromCelcius($celsius, $to);
+}
+// this fuction converts any temerature to celcius 
+function toCelcius($val, $from) 
+{
   switch($from) {
     case 'Celcius':
       return $val;
@@ -84,7 +114,9 @@ function toCelcius($val, $from) {
       break;
   }
 }
-function fromCelcius($val, $to) {
+// this fuction converts celcius to users selected unit
+function fromCelcius($val, $to) 
+{
   switch($to) {
     case 'Celcius':
       return $val;
@@ -97,56 +129,65 @@ function fromCelcius($val, $to) {
       break;
   }
 }
-function temp($val, $from, $to) {
-  $celsius = toCelcius($val, $from);
-  echo fromCelcius($celsius, $to);
+
+// this fuction converts any area to Square Meters and then from Square Meters to users selected unit
+function area($val, $from, $to)
+{
+    $meter=toSqMeter($val, $from);
+    echo fromSqMeter($meter, $to);
+}
+// this fuction converts any area to Square Meters 
+function toSqMeter($val, $from)
+{
+    return $val * pow(meter[$from], 2);
+}
+// this fuction converts Square Meters to users selected unit
+function fromSqMeter($val, $to)
+{
+    return $val / pow(meter[$to], 2);
 }
 
-function area($val,$from,$to){
-    $meter=toSqMeter($val,$from);
-    echo fromSqMeter($meter,$to);
+// this fuction converts any speed to KMPH and then from KMPH to users selected unit
+function speed($val, $from, $to)
+{
+    $kilo=toKMPH($val, $from);
+    echo fromKMPH($kilo, $to);
 }
-function toSqMeter($val,$from){
-    return $val*pow(meter[$from],2);
+// this fuction converts any speed to KMPH 
+function toKMPH($val, $from)
+{
+    return $val * kmph[$from];
 }
-function fromSqMeter($val,$to){
-    return $val/pow(meter[$to],2);
-}
-
-function speed($val,$from,$to){
-    $kilo=toKMPH($val,$from);
-    echo fromKMPH($kilo,$to);
-}
-function toKMPH($val,$from){
-    return $val*kmph[$from];
-}
-function fromKMPH($val,$to){
-    return $val/kmph[$to];
+// this fuction converts KMPH to users selected unit
+function fromKMPH($val, $to)
+{
+    return $val / kmph[$to];
 }
 
+// this if statement is executed on ajax call it checks from where the ajax is called and redirects execution to desired function
 if(isset($_POST['type'])){
-    $value=$_POST["v1"];
-    $from=$_POST["o1"];
-    $to=$_POST["o2"];
+    $value = $_POST["v1"];
+    $from = $_POST["o1"];
+    $to = $_POST["o2"];
 
     switch($_POST['type']){
         case 'length':
-            len($value,$from,$to);
+            len($value, $from, $to);
             break;
         case 'volume':
-            vol($value,$from,$to);
+            vol($value, $from, $to);
             break;
         case 'weight':
-            weight($value,$from,$to);
+            weight($value, $from, $to);
             break;
         case 'temp':
-            temp($value,$from,$to);
+            temp($value, $from, $to);
             break;
         case 'area':
-            area($value,$from,$to);
+            area($value, $from, $to);
             break;
         case 'speed':
-            speed($value,$from,$to);
+            speed($value, $from, $to);
             break;
     }
 
