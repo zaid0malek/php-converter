@@ -1,8 +1,8 @@
 <?php
-if(isset($_POST['submit'])){
-  $from=$_POST['opt1'];
-  $to=$_POST['opt2'];
-  $value=$_POST['val1'];
+if( isset($_POST['submit']) ){
+  $from = $_POST['opt1'];
+  $to = $_POST['opt2'];
+  $value = $_POST['val1'];
   $reqUrl = "https://api.exchangerate-api.com/v4/latest/$from";
   $responseJson = file_get_contents($reqUrl);
 

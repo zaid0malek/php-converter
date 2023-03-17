@@ -1,35 +1,35 @@
 <?php
 
-if(isset($_POST['submit'])){
-  $from=$_POST['opt1'];
-  $to=$_POST['opt2'];
-  $value=$_POST['val1'];
+if( isset($_POST['submit']) ){
+  $from = $_POST['opt1'];
+  $to = $_POST['opt2'];
+  $value = $_POST['val1'];
   switch($from){
     case "dec":
-      $decimal=$value;
+      $decimal = $value;
       break;
     case "bin":
-      $decimal=bindec($value);
+      $decimal = bindec($value);
       break;
     case "oct":
-      $decimal=octdec($value);
+      $decimal = octdec($value);
       break;
     case "dec":
-      $decimal=hexdec($value);
+      $decimal = hexdec($value);
       break;
   }
   switch($to){
     case "dec":
-      $result=$decimal;
+      $result = $decimal;
       break;
     case "bin":
-      $result=decbin($decimal);
+      $result = decbin($decimal);
       break;
     case "oct":
-      $result=decoct($decimal);
+      $result = decoct($decimal);
       break;
     case "dec":
-      $result=dechex($decimal);
+      $result = dechex($decimal);
       break;
   }
 
