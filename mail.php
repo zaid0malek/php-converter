@@ -5,7 +5,7 @@ if (isset($_POST['submit'])) {
     $body = $_POST['body'];
     $from = "From: hekahekameka@gmail.com";
 
-    if(mail($to, $sub, $body, $from)){
+    if (mail($to, $sub, $body, $from)) {
         echo "mail sent to: $to, having :$sub//$body ,,, by $from";
     }
 }

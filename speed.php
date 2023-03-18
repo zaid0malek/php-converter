@@ -1,3 +1,6 @@
+<?php
+require "values.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,13 +30,11 @@
               <div class="form-group">
                 <label for="opt1">From</label>
                 <select name="opt1" id="opt1" class="form-control">
-                  <option value="Lightspeed">Lightspeed</option>
-                  <option value="Mach">Mach</option>
-                  <option value="Mps">Meter/Second</option>
-                  <option value="Kmph">Kilometer/Hour</option>
-                  <option value="Kmps">Kilometer/Second</option>
-                  <option value="Knot">Knot</option>
-                  <option value="Mlph">Mile/Hour</option>
+                  <?php
+                    foreach (array_keys(kmph) as $unit) {
+                      echo "<option value='$unit'>$unit</option>";
+                    }
+                  ?>
                 </select>
               </div>
               <div class="form-group">
@@ -42,13 +43,11 @@
               <div class="form-group">
                 <label for="opt2">To</label>
                 <select name="opt2" id="opt2" class="form-control">
-                  <option value="Lightspeed">Lightspeed</option>
-                  <option value="Mach">Mach</option>
-                  <option value="Mps">Meter/Second</option>
-                  <option value="Kmph">Kilometer/Hour</option>
-                  <option value="Kmps">Kilometer/Second</option>
-                  <option value="Knot">Knot</option>
-                  <option value="Mlph">Mile/Hour</option>
+                  <?php
+                    foreach (array_keys(kmph) as $unit) {
+                      echo "<option value='$unit'>$unit</option>";
+                    }
+                  ?>
                 </select>
               </div>
               <div class="form-group">

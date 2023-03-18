@@ -9,7 +9,7 @@ $(document).ready(function () {
 
         $.ajax({
             method: "POST",
-            url: "/conversion.php",
+            url: "conversion.php",
             dataType: "json",
             data: data,
             success: function (val) {

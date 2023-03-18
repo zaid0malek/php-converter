@@ -1,3 +1,6 @@
+<?php
+require "values.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,10 +30,11 @@
               <div class="form-group">
                 <label for="opt1">From</label>
                 <select name="opt1" id="opt1" class="form-control">
-                  <option value="mcube">Cubic meter</option>
-                  <option value="cmcube">Cubic centimeter</option>
-                  <option value="mmcube">Cubic millimeter</option>
-                  <option value="liter">Liter</option>
+                  <?php
+                    foreach (array_keys(liter) as $unit) {
+                      echo "<option value='$unit'>$unit</option>";
+                    }
+                  ?>
                 </select>
               </div>
               <div class="form-group">
@@ -39,10 +43,11 @@
               <div class="form-group">
                 <label for="opt2">To</label>
                 <select name="opt2" id="opt2" class="form-control">
-                  <option value="mcube">Cubic meter</option>
-                  <option value="cmcube">Cubic centimeter</option>
-                  <option value="mmcube">Cubic millimeter</option>
-                  <option value="liter">Liter</option>
+                  <?php
+                    foreach (array_keys(liter) as $unit) {
+                      echo "<option value='$unit'>$unit</option>";
+                    }
+                  ?>
                 </select>
               </div>
               <div class="form-group">

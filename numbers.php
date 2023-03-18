@@ -1,10 +1,10 @@
 <?php
 
-if( isset($_POST['submit']) ){
+if (isset($_POST['submit'])) {
   $from = $_POST['opt1'];
   $to = $_POST['opt2'];
   $value = $_POST['val1'];
-  switch ($from){
+  switch ($from) {
     case "dec":
       $decimal = $value;
       break;
@@ -18,7 +18,7 @@ if( isset($_POST['submit']) ){
       $decimal = hexdec($value);
       break;
   }
-  switch ($to){
+  switch ($to) {
     case "dec":
       $result = $decimal;
       break;

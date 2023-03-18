@@ -1,3 +1,6 @@
+<?php
+require "values.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,16 +32,11 @@
                 <div class="form-group">
                     <label for="opt1">From</label>
                 <select name="opt1" id="opt1" class="form-control">
-                    <option value="Kilometer">Kilometer</option>
-                    <option value="Meter">Meter</option>
-                    <option value="Centimeter">Centimeter</option>
-                    <option value="Millimeter">Millimeter</option>
-                    <option value="Micrometer">Micrometer</option>
-                    <option value="Nanometer">Nanometer</option>
-                    <option value="Mile">Mile</option>
-                    <option value="Foot">Foot</option>
-                    <option value="Yard">Yard</option>                  
-                    <option value="Inch">Inch</option>
+                    <?php
+                    foreach (array_keys(meter) as $unit) {
+                      echo "<option value='$unit'>$unit</option>";
+                    }
+                    ?>
                 </select>
               </div>
               <div class="form-group">
@@ -47,15 +45,11 @@
               <div class="form-group">
                 <label for="opt2">To</label>
                 <select name="opt2" id="opt2" class="form-control">
-                    <option value="Kilometer">Kilometer</option>
-                    <option value="Meter">Meter</option>
-                    <option value="Centimeter">Centimeter</option>
-                    <option value="Millimeter">Millimeter</option>
-                    <option value="Micrometer">Micrometer</option>
-                    <option value="Nanometer">Nanometer</option>
-                    <option value="Foot">Foot</option>
-                    <option value="Yard">Yard</option>                  
-                    <option value="Inch">Inch</option>
+                  <?php
+                    foreach (array_keys(meter) as $unit) {
+                      echo "<option value='$unit'>$unit</option>";
+                    }
+                  ?>
                 </select>
               </div>
               <div class="form-group">
