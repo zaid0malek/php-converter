@@ -1,20 +1,20 @@
 <?php
-if( isset($_POST['submit']) ){
-  $from = $_POST['opt1'];
-  $to = $_POST['opt2'];
-  $value = $_POST['val1'];
-  $reqUrl = "https://api.exchangerate-api.com/v4/latest/$from";
-  $responseJson = file_get_contents($reqUrl);
-
-  // Continuing if we got a result
-  if(false !== $responseJson) {
-      try {
-        $responseObject = json_decode($responseJson);
-        $price = round(($value * $responseObject->rates->$to), 2);
-      }
-      catch(Exception $e) {
-        echo $e;
-      }
+$reqUrl = "https://api.exchangerate-api.com/v4/latest/USD";
+$responseJson = file_get_contents($reqUrl);
+// Continuing if we got a result
+if (false !== $responseJson) {
+  try {
+    $responseObject = json_decode($responseJson);
+    if (isset($_POST['submit'])) {
+      $from = $_POST['opt1'];
+      $to = $_POST['opt2'];
+      $value = $_POST['val1'];
+      $tousd = round(($value * $responseObject->rates->$from), 2);
+      $price = round(($value * $responseObject->rates->$to), 2);
+    }
+  }
+  catch (Exception $e) {
+      echo $e;
   }
 }
 ?>
@@ -49,28 +49,54 @@ if( isset($_POST['submit']) ){
                 <div class="form-group">
                     <label for="opt1">From</label>
                   <select name="opt1" id="opt1" class="form-control">
-                    <option value="CAD" <?php if(isset($from)) if($from=="CAD") echo "selected"?>>Canadian Dollar</option>
-                    <option value="EUR" <?php if(isset($from)) if($from=="EUR") echo "selected"?>>Euro</option>
-                    <option value="INR" <?php if(isset($from)) if($from=="INR") echo "selected"?>>Indian Rupee</option>
-                    <option value="GBP" <?php if(isset($from)) if($from=="GBP") echo "selected"?>>Pound</option>
-                    <option value="USD" <?php if(isset($from)) if($from=="USD") echo "selected"?>>US Dollar</option>
+                    <?php
+                      if (isset($responseObject)) {
+                        foreach (array_keys((array)$responseObject->rates) as $cur) {
+
+                          if (isset($from)) { 
+                            if ($from==$cur) {
+                              echo "<option value='$cur' selected> $cur </option>";
+                            }
+                            else {
+                              echo "<option value='$cur'> $cur </option>";
+                            }
+                          }
+                          else {
+                            echo "<option value='$cur'> $cur </option>";
+                          }
+                        }
+                      }
+                    ?>
+                    
                   </select>
                 </div>
                 <div class="form-group">
-                    <input type="number" class="form-control" name="val1" id="val1"  <?php if(isset($value)) echo"value=$value"; else echo "value=0"?>>
+                    <input type="number" class="form-control" name="val1" id="val1"  <?php if (isset($value)) echo"value=$value"; else echo "value=0"?>>
                 </div>
                 <div class="form-group">
-                    <label for="opt2">To</label>
+                  <label for="opt2">To</label>
                   <select name="opt2" id="opt2" class="form-control">
-                    <option value="CAD" <?php if(isset($to)) if($to=="CAD") echo "selected"?>>Canadian Dollar</option>
-                    <option value="EUR" <?php if(isset($to)) if($to=="EUR") echo "selected"?>>Euro</option>
-                    <option value="INR" <?php if(isset($to)) if($to=="INR") echo "selected"?>>Indian Rupee</option>
-                    <option value="GBP" <?php if(isset($to)) if($to=="GBP") echo "selected"?>>Pound</option>
-                    <option value="USD" <?php if(isset($to)) if($to=="USD") echo "selected"?>>US Dollar</option>
+                    <?php
+                      if (isset($responseObject)) {
+                        foreach (array_keys((array)$responseObject->rates) as $cur) {
+                          if (isset($to)) { 
+                            if ($to==$cur) {
+                              echo "<option value='$cur' selected> $cur </option>";
+                            }
+                            else {
+                              echo "<option value='$cur'> $cur </option>";
+                            }
+                          }
+                          else {
+                            echo "<option value='$cur'> $cur </option>";
+                          }
+                        }
+                      }
+                    ?>
                   </select>
                 </div>
                 <div class="form-group">
-                    <input type="number" class="form-control" name="val2"  id="val2" readonly <?php if(isset($price)) echo"value=$price";?>>
+                    <input type="number" class="form-control" name="val2"  id="val2" readonly <?php if (isset($price)) echo"value=$price";?>>
                 </div> 
                 <div class="form-group">
                     <span><?php if(isset($value)) echo"Please Note this rates are as of ".date("d/m/Y", strtotime( ' -1 day'));?></span>              
