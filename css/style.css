@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 15px;
+  background: #eee;
+}
+
+.form-title {
+  margin: -2rem 0rem 2rem;
+}
+
+.btn-round {
+  width: 10rem;
+  height: 8rem;
+  border-radius: 1rem;
+  margin: 2rem;
+}
+
+.delimiter {
+  padding: 1rem;
+}
+
+.modal {
+  display: block;
+}
+
+.modal-dialog {
+  width: 70rem;
+}
+
+.modal-content {
+  border-radius: 10px;
+  padding-top: 2rem;
+  width: 50rem;
+}
